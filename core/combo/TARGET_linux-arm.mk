@@ -44,8 +44,7 @@ endif
 # 4.8 is default in my optimizations, as it gives noticable performance boost
 # Don't use 4.9 unless you feel confident, varios strange libstlport segmentation faults may happen (bootloop)
 ifeq ($(strip $(TARGET_GCC_VERSION_EXP)),)
-#TARGET_GCC_VERSION := 4.7
-TARGET_GCC_VERSION := 4.9
+TARGET_GCC_VERSION := 4.7
 else
 TARGET_GCC_VERSION := $(TARGET_GCC_VERSION_EXP)
 endif
@@ -81,16 +80,16 @@ TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 # This is where magic starts
 
 # Target ARM. Usually you don't need to change anything here
-TARGET_arm_CFLAGS := -O3 -DNDEBUG -fstrict-aliasing -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized
+TARGET_arm_CFLAGS := -O2 -DNDEBUG -fstrict-aliasing -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized
 
 # Target THUMB, major portion of Android. Please change -O3 back to -Os in case of issues
-TARGET_thumb_CFLAGS := -mthumb -O3 -DNDEBUG -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -frerun-cse-after-loop -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized
+TARGET_thumb_CFLAGS := -mthumb -O2 -DNDEBUG -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -frerun-cse-after-loop -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized
 
 # Release CFLAGS. Usually you don't need to change anything here
-TARGET_RELEASE_CFLAGS := -O3 -DNDEBUG -fno-strict-aliasing -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized
+TARGET_RELEASE_CFLAGS := -O2 -DNDEBUG -fno-strict-aliasing -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized
 
 # Release CPPFLAGS. Usually you don't need to change anything here
-TARGET_GLOBAL_CPPFLAGS += -O3 -DNDEBUG -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized -Wstrict-aliasing=3
+TARGET_GLOBAL_CPPFLAGS += -O2 -DNDEBUG -funsafe-loop-optimizations -fsection-anchors -fivopts -ftree-loop-im -ftree-loop-ivcanon -ffunction-sections -fdata-sections -funswitch-loops -frename-registers -fomit-frame-pointer -fgcse-sm -fgcse-las -fweb -ftracer -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized -Wstrict-aliasing=3
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
 # or in your environment to force a full arm build, even for
